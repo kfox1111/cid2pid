@@ -27,7 +27,8 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - run: |
-          docker build -t ghcr.io/kfox1111/cid2pid:${{github.ref_name}}-$(uname -i)
+          echo "building: {{github.ref_name}}-$(uname -i)"
+          docker build -t ghcr.io/kfox1111/cid2pid:${{github.ref_name}}-$(uname -i) .
           docker push -t ghcr.io/kfox1111/cid2pid:${{github.ref_name}}-$(uname -i)
   manifest:
     runs-on: ubuntu-24.0.4

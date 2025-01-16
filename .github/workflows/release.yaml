@@ -34,6 +34,12 @@ jobs:
     runs-on: ubuntu-24.04
     needs: build
     steps:
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3.3.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - run: |
           docker manifest create ghcr.io/kfox1111/cid2pid:${{github.ref_name}} \
             --amend ghcr.io/kfox1111/cid2pid:${{github.ref_name}}-x86_64 \

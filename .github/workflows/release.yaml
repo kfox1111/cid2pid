@@ -31,7 +31,7 @@ jobs:
           docker build -t ghcr.io/kfox1111/cid2pid:${{github.ref_name}}-$(uname -i) .
           docker push ghcr.io/kfox1111/cid2pid:${{github.ref_name}}-$(uname -i)
   manifest:
-    runs-on: ubuntu-24.0.4
+    runs-on: ubuntu-24.04
     needs: build
     steps:
       - run: |
